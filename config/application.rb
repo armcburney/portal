@@ -4,6 +4,9 @@ require 'rails/all'
 
 Bundler.require(*Rails.groups)
 
+# Load environment variables from .env file
+Dotenv::Railtie.load
+
 module Blog
   #
   # Main application configuration

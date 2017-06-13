@@ -1,8 +1,14 @@
-/.bundle
+.bundle
+.byebug_history
+.env
+
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-/node_modules
+
+yarn.lock
 /yarn-error.log
-.byebug_history
+
+public/assets/
+node_modules
