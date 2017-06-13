@@ -10,6 +10,7 @@ ruby '2.4.1'
 gem 'coffee-rails', '~> 4.2'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'jbuilder', '~> 2.5'
+gem 'mathjax-rails'
 gem 'pg'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.1'

@@ -10,4 +10,7 @@ Rails.application.routes.draw do
 
   # Root route
   root 'articles#index'
+
+  # MathJax library
+  mathjax 'mathjax'
 end
