@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   # Articles controller
   get  'articles/index'
+  resources :articles
 
   # Root route
   root 'articles#index'
