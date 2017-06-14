@@ -1,3 +1,7 @@
-h1 Article
-h2= @article.title
-== ArticlesHelper.render_html!(@article.text)
+= render partial: 'shared/nav'
+
+.row
+  .section
+    h1 Article
+    h2= @article.title
+    == ArticlesHelper.render_html!(@article.text)

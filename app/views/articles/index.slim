@@ -1,3 +1,17 @@
-h1 Articles
-hr
+= render partial: 'shared/nav'
 
+.row
+  .section
+    .col-2-3
+      h1 = @featured.title
+      hr
+      p Created by #{@featured.author} at #{@featured.created_at}
+      == ArticlesHelper.render_html!(@featured.text)
+
+    .col-1-3
+      h1 All articles
+      hr
+
+      - @articles.each do |article|
+        h3 = article.title
+        p  = article.description

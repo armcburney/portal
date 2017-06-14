@@ -1,5 +1,9 @@
-h1 Edit Article
-h2 = @article.title
+= render partial: 'shared/nav'
 
-= form_for(@article) { |f| render partial: 'shared/form', locals: { form: f } }
-= link_to 'Back', articles_path
+.row
+  .section
+    h1 Edit Article
+    h2 = @article.title
+
+    = form_for(@article) { |f| render partial: 'shared/form', locals: { form: f } }
+    = link_to 'Back', articles_path
