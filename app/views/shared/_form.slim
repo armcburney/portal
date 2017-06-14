@@ -1,0 +1,12 @@
+- ArticlesHelper::LABELS.each do |label|
+  p
+    = form.label label
+    br/
+    = form.text_field label
+
+p
+  = form.label :text
+  br/
+  = form.text_area :text
+p
+  = form.submit

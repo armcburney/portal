@@ -1,18 +1,5 @@
 h1 Edit Article
 h2 = @article.title
 
-= form_for(@article) do |f|
-  - ArticlesHelper::LABELS.each do |label|
-    p
-      = f.label label
-      br/
-      = f.text_field label
-
-  p
-    = f.label :text
-    br/
-    = f.text_area :text
-  p
-    = f.submit
-
+= form_for(@article) { |f| render partial: 'shared/form', locals: { form: f } }
 = link_to 'Back', articles_path
