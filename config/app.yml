@@ -20,8 +20,8 @@ defaults: &defaults
   author:
     name: "Author Name"
     email: "Author Email"
-    description: "Author Description"
     twitter: "Author Twitter"
+    description: "Author Description"
     about: "Author About"
 
 development:

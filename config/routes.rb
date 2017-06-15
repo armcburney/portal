@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # Admin controller
   get 'admin', to: 'admin#index'
   get 'admin/settings'
+  get 'admin/admin_settings'
 
   namespace :admin do
     resources :settings

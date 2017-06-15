@@ -1,5 +1,5 @@
 #
-# application_controller.rb
+# about_controller.rb
 #
 class AboutController < ApplicationController
   def index

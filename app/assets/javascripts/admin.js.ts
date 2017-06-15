@@ -1,4 +1,30 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+/// <reference path="typings/tsd.d.ts" />
 
-console.log('Hello from TypeScript');
+interface Author {
+    name: string;
+    email: string;
+    twitter: string;
+    description: string;
+    about: string;
+}
+
+class AdminSettings {
+    font: string;
+    author: Author;
+
+    constructor() {
+        this.getAdminSettings((settings: any) => {
+            console.log(settings);
+            this.font = settings.admin.font;
+            this.author = settings.author;
+        });
+    }
+
+    private getAdminSettings(callback: any) :any {
+        return $.get("admin_settings/", (response) => callback(response));
+    }
+}
+
+$(() => {
+    var admin = new AdminSettings();
+});
