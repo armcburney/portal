@@ -1,4 +1,12 @@
-h1 Contact#index
+= render partial: 'shared/nav'
 
-= form_for :send_mail do |f|
-  = f.submit
+.row.bg-black.light-text
+  .section.center
+    h1 Contact me
+
+.row
+  .section
+    h1 Contact#index
+
+    = form_for :send_mail do |f|
+      = f.submit

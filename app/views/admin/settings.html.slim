@@ -1,0 +1,33 @@
+= render partial: 'shared/nav'
+
+.row.hero.hero-medium.bg-black.bg-center.light-text
+  .overlay-black
+    .section.center.narrow
+      h1 Settings
+      hr.small.green
+      h2 Customizable blog settings
+.row
+  .section
+    h1 Overview
+    p The <code>/admin/settings</code> page allows you to customize the blog style and presentation to your liking.
+
+.row.bg-black.light-text
+  .section.center
+    h1 Typography
+.row
+  .section
+    h2 Font: #{@settings[:admin][:font]}
+
+    - @settings[:admin][:typography].each do |heading, values|
+      | <#{heading}>#{values[:markdown]} #{heading}</#{heading}>
+      input[placeholder="#{values['font-size']}" type='number']
+      input[placeholder="#{values['color']}" type='text']
+    p p
+
+    h3 Code
+    pre
+      <code>
+        def some_function(params)
+          puts "this is awesome"
+        end
+      </code>

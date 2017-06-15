@@ -14,6 +14,7 @@ gem 'mathjax-rails'
 gem 'pg'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.1'
+gem "rails-settings-cached"
 gem 'redcarpet'
 gem 'rspec-rails', '~> 3.5'
 gem 'sass-rails', '~> 5.0'

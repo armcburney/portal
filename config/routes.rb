@@ -1,12 +1,23 @@
 Rails.application.routes.draw do
-  # Contacts controller
-  get  'contact/index'
-  post 'contact/index', to: 'contact#send_mail'
-  get  'contact/send_mail'
+  # About controller
+  get 'about', to: 'about#index'
+
+  # Admin controller
+  get 'admin', to: 'admin#index'
+  get 'admin/settings'
+
+  namespace :admin do
+    resources :settings
+  end
 
   # Articles controller
-  get  'articles/index'
+  get 'articles/index'
   resources :articles
+
+  # Contacts controller
+  get 'contact', to: 'contact#index'
+  post 'contact', to: 'contact#send_mail'
+  get 'contact/send_mail'
 
   # Root route
   root 'articles#index'

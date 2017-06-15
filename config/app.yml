@@ -1,0 +1,34 @@
+# config/app.yml for rails-settings-cached
+defaults: &defaults
+  admin:
+    font: "'Helvetica Neue', Helvetica, sans-serif"
+
+    typography:
+      h1:
+        font-size: 32
+        markdown: "#"
+        color: "#444"
+      h2:
+        font-size: 32
+        markdown: "##"
+        color: "#444"
+      h3:
+        font-size: 18
+        markdown: "###"
+        color: "#444"
+
+  author:
+    name: "Author Name"
+    email: "Author Email"
+    description: "Author Description"
+    twitter: "Author Twitter"
+    about: "Author About"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
