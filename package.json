@@ -1,5 +1,8 @@
 {
   "name": "blog",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^7.0.31"
+  }
 }

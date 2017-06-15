@@ -12,6 +12,10 @@ module Blog
   # Main application configuration
   #
   class Application < Rails::Application
+    config.app_generators.javascript_engine :typescript
+
+    # Enable the asset pipeline
+    config.assets.enabled = true
     config.load_defaults 5.1
     config.sass.preferred_syntax = :sass
   end
