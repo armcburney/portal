@@ -19,9 +19,9 @@
     h2 Font: #{@settings[:admin][:font]}
 
     - @settings[:admin][:typography].each do |heading, values|
-      | <#{heading}>#{values[:markdown]} #{heading}</#{heading}>
+      | <#{heading} id=#{heading}>#{values[:markdown]} #{heading}</#{heading}>
       input[placeholder="#{values['font-size']}" type='number']
-      input[placeholder="#{values['color']}" type='text']
+      input[id="#{heading}-textInput" placeholder="#{values['color']}" type='text']
     p p
 
     h3 Code
