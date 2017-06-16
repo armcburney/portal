@@ -9,19 +9,28 @@
 .row
   .section
     h1 Overview
-    p The <code>/admin/settings</code> page allows you to customize the blog style and presentation to your liking.
+    p The <code>/admin/settings</code> page allows you to customize the blog
+      style and presentation to your liking.
 
 .row.bg-black.light-text
   .section.center
     h1 Typography
+
 .row
   .section
-    h2 Font: #{@settings[:admin][:font]}
+    = form_for('/admin/settings', method: :put,
+               url: admin_settings_font_path) do |form|
+      h2 Font: #{@settings[:admin][:font]}
+      = submit_tag "Save font settings"
 
-    - @settings[:admin][:typography].each do |heading, values|
-      | <#{heading} id=#{heading}>#{values[:markdown]} #{heading}</#{heading}>
-      input[placeholder="#{values['font-size']}" type='number']
-      input[id="#{heading}-textInput" placeholder="#{values['color']}" type='text']
+    = form_for('/admin/settings', method: :put,
+               url: admin_settings_typography_path) do |form|
+      - @settings[:admin][:typography].each do |heading, values|
+        | <#{heading} id=#{heading} style="color: #{values[:color]} font-size: #{values[:size]}">
+          #{values[:markdown]} #{heading}</#{heading}>
+        = form.number_field "#{heading}.size", value: values[:size].to_s
+        = form.text_field "#{heading}.colour", value: values[:color]
+      = submit_tag "Save typography settings"
     p p
 
     h3 Code

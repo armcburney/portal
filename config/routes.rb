@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'admin', to: 'admin#index'
   get 'admin/settings'
   get 'admin/admin_settings'
+  put 'admin/settings/typography', to: 'admin#update_typography_settings'
+  put 'admin/settings/font', to: 'admin#update_font_settings'
 
   namespace :admin do
     resources :settings

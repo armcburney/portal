@@ -1,41 +1,67 @@
 /// <reference path="typings/tsd.d.ts" />
 
-interface Author {
-    name: string;
-    email: string;
-    twitter: string;
-    description: string;
-    about: string;
-}
+/// <reference path="settings/author.js.ts" />
+/// <reference path="settings/heading.ts" />
 
+/**
+ * TypeScript object representation of custom blog settings
+ */
 class AdminSettings {
-    font: string;
-    author: Author;
+    font: string
+    author: Settings.Author
 
+    // Fetch user settings from blog API
     constructor() {
         this.getAdminSettings((settings: any) => {
-            console.log(settings);
-            this.font = settings.admin.font;
-            this.author = settings.author;
+            console.log(settings)
+            this.font = settings.admin.font
+            this.author = settings.author
         });
     }
 
-    setColour(id: String, value: String) {
-        $(`#${id}`).css({ 'color': value });
+    // Updates the internal object font-size for a given heading
+    updateFontSize(event: Event) {
+        let [targetId, targetVal] = this.matchHeadingContent(event)
+        this.setFontSize(targetId, Number(targetVal))
     }
 
+    // Updates the internal object setting colour for a given heading
+    updateHeadingColour(event: Event) {
+        let [targetId, targetVal] = this.matchHeadingContent(event)
+        this.setColour(targetId, targetVal)
+    }
+
+    // Updates the displayed heading font-size
+    private setFontSize(id: string, size: number) {
+        $(`#${id}`).css({ 'font-size': size })
+    }
+
+    // Updates the displayed heading colour
+    private setColour(id: string, value: string) {
+        $(`#${id}`).css({ 'color': value })
+    }
+
+    // Callback method which returns JSON object for user settings
     private getAdminSettings(callback: any): any {
-        return $.get("admin_settings/", (response) => callback(response));
+        return $.get("admin_settings/", (response) => callback(response))
+    }
+
+    // Returns tuple containing id of heading, and value to be updated to
+    private matchHeadingContent(event: Event) {
+        return [
+            $(event.target)[0].id.match(/(h[0-9])/)[0].toString(),
+            $(event.target).val()
+        ]
     }
 }
 
 $(() => {
-    var admin = new AdminSettings();
+    // Instantiate admin settings object
+    var admin = new AdminSettings()
 
-    $('input[type="text"]').keypress((event: Event) => {
-        let targetId: string = $(event.target)[0].id.substring(0, 2);
-        let targetVal: string = $(event.target).val();
-        admin.setColour(targetId, targetVal);
-    });
+    // Event fired when font-size input is changed for a heading
+    $('input[type="number"]').keypress((event: Event) => admin.updateFontSize(event))
+
+    // Event fired when colour input is changed for a heading
+    $('input[type="text"]').keypress((event: Event) => admin.updateHeadingColour(event))
 });
-
