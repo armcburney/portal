@@ -5,15 +5,15 @@ defaults: &defaults
 
     typography:
       h1:
-        font-size: 32
+        size: 32
         markdown: "#"
         color: "#444"
       h2:
-        font-size: 32
+        size: 24
         markdown: "##"
         color: "#444"
       h3:
-        font-size: 18
+        size: 18
         markdown: "###"
         color: "#444"
 
