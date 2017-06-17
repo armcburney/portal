@@ -3,6 +3,6 @@
 #
 class AboutController < ApplicationController
   def index
-    @author = Setting.get_all[:author]
+    @author = Settings.author
   end
 end

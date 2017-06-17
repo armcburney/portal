@@ -7,22 +7,22 @@
 .row
   .section
     .bg-white.padding.no-first-last
-      h2 = @author[:name]
+      h2 = @author['name']
       img.float-right
       ul
         li
           small.gray-light Email
           br
-          span = @author[:email]
+          span = @author['email']
         li
           small.gray-light Twitter
           br
-          span = @author[:twitter]
+          span = @author['twitter']
         li
           small.gray-light Description
           br
-          span = @author[:description]
+          span = @author['description']
       p
         small.gray-light About
         br
-        | #{@author[:about]}
+        | #{@author['about']}
