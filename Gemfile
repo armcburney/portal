@@ -10,13 +10,12 @@ ruby '2.4.1'
 gem 'coffee-rails', '~> 4.2'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'jbuilder', '~> 2.5'
-gem 'json'
 gem 'jquery-rails'
+gem 'json'
 gem 'mathjax-rails'
 gem 'pg'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.1'
-gem "rails-settings-cached"
 gem 'redcarpet'
 gem 'rspec-rails', '~> 3.5'
 gem 'sass-rails', '~> 5.0'
@@ -25,6 +24,7 @@ gem 'turbolinks', '~> 5'
 gem 'typescript-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'uglifier', '>= 1.3.0'
+gem 'vine'
 gem 'vital'
 
 group :development, :test do

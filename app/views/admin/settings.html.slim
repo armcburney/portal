@@ -20,16 +20,16 @@
   .section
     = form_for('/admin/settings', method: :put,
                url: admin_settings_font_path) do |form|
-      h2 Font: #{@settings[:admin][:font]}
+      h2 Font: #{@font}
       = submit_tag "Save font settings"
 
     = form_for('/admin/settings', method: :put,
                url: admin_settings_typography_path) do |form|
-      - @settings[:admin][:typography].each do |heading, values|
-        | <#{heading} id=#{heading} style="color: #{values[:color]} font-size: #{values[:size]}">
-          #{values[:markdown]} #{heading}</#{heading}>
-        = form.number_field "#{heading}.size", value: values[:size].to_s
-        = form.text_field "#{heading}.colour", value: values[:color]
+      - @typography.each do |heading, values|
+        | <#{heading} id=#{heading} style="color: #{values['colour']}; font-size: #{values['size']}px;">
+          #{values['markdown']} #{heading}</#{heading}>
+        = form.number_field "#{heading}.size", value: values['size'].to_s
+        = form.text_field "#{heading}.colour", value: values['colour']
       = submit_tag "Save typography settings"
     p p
 
