@@ -10,6 +10,7 @@ ruby '2.4.1'
 gem 'coffee-rails', '~> 4.2'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'foreman'
+gem 'friendly_id', '~> 5.1.0'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'json'
