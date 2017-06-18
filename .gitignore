@@ -13,3 +13,5 @@ yarn.lock
 public/assets/
 node_modules
 app/assets/javascripts/typings/
+/public/packs
+/node_modules

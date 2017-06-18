@@ -1,0 +1,18 @@
+/**
+ * Process style related settings programmatically with ERB templating
+ */
+
+body
+  font-family: <%= Settings.font || 'Arial' %> !important
+
+  h1
+    color: <%= Settings.typography['h1']['colour'] %>
+    font-size: <%= Settings.typography['h1']['size'] %>px
+
+  h2
+    color: <%= Settings.typography['h2']['colour'] %>
+    font-size: <%= Settings.typography['h2']['size'] %>px
+
+  h3
+    color: <%= Settings.typography['h3']['colour'] %>
+    font-size: <%= Settings.typography['h3']['size'] %>px
