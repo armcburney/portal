@@ -44,7 +44,7 @@ class Settings {
       $(event.target).val()
     ];
   }
-};
+}
 
 $(() => {
   // Instantiate admin settings object
