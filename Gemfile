@@ -9,7 +9,6 @@ ruby '2.4.1'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'dotenv-rails', groups: %i[development test]
-gem 'foreman'
 gem 'friendly_id', '~> 5.1.0'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
@@ -41,4 +40,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
+end
+
+group :test do
+  gem 'rails-controller-testing'
 end
