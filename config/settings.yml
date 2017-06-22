@@ -1,6 +1,7 @@
 ---
 admin:
   font: "'Helvetica Neue', Helvetica, sans-serif"
+  code_style: atom_one_light
   typography:
     h1:
       size: '32'
