@@ -39,4 +39,19 @@ module Settings
   def reload!
     @settings = YAML.safe_load(File.read(SETTINGS_PATH))
   end
+
+  def active_stylesheet
+    @settings['admin']['code_style']
+  end
+
+  def disabled_stylesheets
+    stylesheets.map { |stylesheet| [stylesheet, true] }
+               .to_h
+               .merge(active_stylesheet => false)
+  end
+
+  def stylesheets
+    %w[atom_one_dark atom_one_light androidstudio darcula github monokai
+       obsidian solarized_dark solarized_light sunburst xcode zenburn]
+  end
 end

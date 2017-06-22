@@ -7,6 +7,7 @@ class Settings {
     this.getAdminSettings((settings) => {
       this.font = settings.admin.font;
       this.author = settings.author;
+      this.activeSheetId = settings.admin.code_style;
     });
   }
 
@@ -37,6 +38,14 @@ class Settings {
     return $.get("admin_settings/", (response) => callback(response));
   }
 
+  // Replaces the stylesheet for highlight.js code styles
+  updateCodeHighlight(sheetId) {
+    $(`#${this.activeSheetId}`).prop('disabled', true);
+    $(`#${sheetId}`).prop('disabled', false);
+
+    this.activeSheetId = sheetId;
+  }
+
   // Returns tuple containing id of heading, and value to be updated to
   matchHeadingContent(event) {
     return [
@@ -51,8 +60,14 @@ $(() => {
   let settings = new Settings();
 
   // Event fired when font-size input is changed for a heading
-  $('input[type="number"]').keypress((event) => settings.updateFontSize(event));
+  $('input[type="number"]')
+    .keypress((event) => settings.updateFontSize(event));
 
   // Event fired when colour input is changed for a heading
-  $('input[type="text"]').keypress((event) => settings.updateHeadingColour(event));
+  $('input[type="text"]')
+    .keypress((event) => settings.updateHeadingColour(event));
+
+  // Change the syntax highlighting for code
+  $('select[name="/admin/settings[code_style]"]')
+    .change((element) => settings.updateCodeHighlight($(element.target).val()));
 });

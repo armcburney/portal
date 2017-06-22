@@ -10,8 +10,10 @@ class AdminController < ApplicationController
     # Reload settings on page refresh
     Settings.reload!
 
-    @font       = Settings.font
-    @typography = Settings.typography
+    @active_style = Settings.active_stylesheet
+    @stylesheets  = Settings.disabled_stylesheets
+    @font         = Settings.font
+    @typography   = Settings.typography
   end
 
   # Returns JSON representation of custom settings
@@ -25,7 +27,7 @@ class AdminController < ApplicationController
   # Updates Settings cache for typography related settings
   def update_typography_settings
     params['/admin/settings'].each do |key, value|
-      Settings.update_setting("admin.typography.#{key}", value)
+      Settings.update_setting("admin.#{key}", value)
     end
 
     Settings.save!

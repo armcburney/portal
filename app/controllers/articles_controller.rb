@@ -3,12 +3,14 @@
 #
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
-    @featured = Article.last
+    @articles   = Article.all
+    @featured   = Article.last
+    @stylesheet = Settings.active_stylesheet
   end
 
   def show
-    @article = Article.friendly.find(params[:id])
+    @article    = Article.friendly.find(params[:id])
+    @stylesheet = Settings.active_stylesheet
   end
 
   def new

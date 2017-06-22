@@ -1,43 +1,93 @@
 = render partial: 'shared/nav'
 = javascript_pack_tag 'settings'
 
+- @stylesheets.each do |stylesheet, disabled|
+  = stylesheet_pack_tag "highlight/styles/#{stylesheet}", disabled: disabled, id: stylesheet
+
+= javascript_pack_tag 'highlight/highlight'
+
 .row.hero.hero-medium.bg-black.bg-center.light-text
   .overlay-black
     .section.center.narrow
       h1 Settings
       hr.small.green
       h2 Customizable blog settings
-.row
-  .section
-    h1 Overview
-    p The <code>/admin/settings</code> page allows you to customize the blog
-      style and presentation to your liking.
-
-.row.bg-black.light-text
-  .section.center
-    h1 Typography
 
 .row
   .section
-    = form_for('/admin/settings', method: :put,
-               url: admin_settings_font_path) do |form|
+    = form_for('/admin/settings', method: :put, url: admin_settings_font_path) do |form|
+
+      .heading
+        h1 Overview
+        hr
+        p The <code>/admin/settings</code> page allows you to customize the blog
+          style and presentation to your liking.
+
+      .heading
+        h1 Typography
+        hr
+
       h2 Font: #{@font}
-      = submit_tag "Save font settings"
 
-    = form_for('/admin/settings', method: :put,
-               url: admin_settings_typography_path) do |form|
-      - @typography.each do |heading, values|
-        | <#{heading} id=#{heading} style="color: #{values['colour']}; font-size: #{values['size']}px;">
-          #{values['markdown']} #{heading}</#{heading}>
-        = form.number_field "#{heading}.size", value: values['size'].to_s
-        = form.text_field "#{heading}.colour", value: values['colour']
-      = submit_tag "Save typography settings"
-    p p
+    = form_for('/admin/settings', method: :put, url: admin_settings_typography_path) do |form|
+      table
+        tbody
+          tr
+            - @typography.each do |heading, values|
+              td
+                | <#{heading} id=#{heading} style="color: #{values['colour']}; font-size: #{values['size']}px;">
+                  #{values['markdown']} #{heading}</#{heading}>
+                = form.number_field "typography.#{heading}.size", value: values['size'].to_s
+                = form.text_field "typography.#{heading}.colour", value: values['colour']
 
-    h3 Code
-    pre
-      <code>
-        def some_function(params)
-          puts "this is awesome"
-        end
-      </code>
+      .heading
+        h1 Code
+        hr
+
+      label
+        = form.select("code_style", @stylesheets.keys.collect { |s| [s.split('_').map(&:capitalize).join(' '), s] }, selected: @active_style)
+
+      .right-padded
+        .col-1-2
+          pre
+            code
+              | # frozen_string_literal: true
+
+                module Blog
+                  class User
+                    attr_reader :uuid, :name, :location
+
+                    def initalize(uuid, name, location)
+                      @uuid     = uuid
+                      @name     = name
+                      @location = location
+                    end
+
+                    def say_hello
+                      puts "Hello my name is \#{name}!"
+                    end
+                  end
+                end
+
+        .col-1-2
+          pre
+            code
+              | /**
+                 * Pattern matching in Scala
+                 */
+                def notify(notification: Message): String =
+                  notification match {
+                    case Email(email, title, _) =>
+                      s"Email from $email with title: $title"
+                    case SMS(number, message) =>
+                      s"SMS from $number. Message: $message"
+                    case PhoneCall(name, link) =>
+                      s"Phone call from $name."
+                  }
+
+                val someSms = SMS("12345", "How are you?")
+
+                // => SMS from 12345. Message: How are you?
+                println(notify(someSms))
+
+      = submit_tag "Save settings"
