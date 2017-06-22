@@ -61,4 +61,6 @@ foreman start
 
 ## Customization
 
-...
+### Settings
+
+![Settings Demo](https://media.giphy.com/media/3o7bu2jualq3JCFdU4/giphy.gif)
