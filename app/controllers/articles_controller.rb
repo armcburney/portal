@@ -5,11 +5,13 @@ class ArticlesController < ApplicationController
   def index
     @articles   = Article.all
     @featured   = Article.last
+    @html_text  = ArticlesHelper.render_html!(@featured.text)
     @stylesheet = Settings.active_stylesheet
   end
 
   def show
     @article    = Article.friendly.find(params[:id])
+    @html_text  = ArticlesHelper.render_html!(@article.text)
     @stylesheet = Settings.active_stylesheet
   end
 

@@ -1,0 +1,20 @@
+.col-1-2
+  pre
+    code
+      | /**
+          * Pattern matching in Scala
+          */
+        def notify(notification: Message): String =
+          notification match {
+            case Email(email, title, _) =>
+              s"Email from $email with title: $title"
+            case SMS(number, message) =>
+              s"SMS from $number. Message: $message"
+            case PhoneCall(name, link) =>
+              s"Phone call from $name."
+          }
+
+        val someSms = SMS("12345", "How are you?")
+
+        // => SMS from 12345. Message: How are you?
+        println(notify(someSms))

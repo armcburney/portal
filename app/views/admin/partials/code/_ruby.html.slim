@@ -1,0 +1,20 @@
+.col-1-2
+  pre
+    code
+      | # frozen_string_literal: true
+
+        module Blog
+          class User
+            attr_reader :uuid, :name, :location
+
+            def initalize(uuid, name, location)
+              @uuid     = uuid
+              @name     = name
+              @location = location
+            end
+
+            def say_hello
+              puts "Hello my name is \#{name}!"
+            end
+          end
+        end
