@@ -1,0 +1,9 @@
+table
+  tbody
+    tr
+      - @typography.each do |heading, values|
+        td
+          | <#{heading} id=#{heading} style="color: #{values['colour']}; font-size: #{values['size']}px;">
+            #{values['markdown']} #{heading}</#{heading}>
+          = form.number_field "typography.#{heading}.size", value: values['size'].to_s
+          = form.text_field "typography.#{heading}.colour", value: values['colour']

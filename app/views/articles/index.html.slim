@@ -1,6 +1,5 @@
 = render partial: 'shared/nav'
 = stylesheet_pack_tag "highlight/styles/#{@stylesheet}"
-= javascript_pack_tag 'highlight/highlight'
 
 .row
   .section
@@ -9,7 +8,7 @@
         h1 = @featured.title
         hr
         p Created by #{@featured.author} at #{@featured.created_at}
-        == ArticlesHelper.render_html!(@featured.text)
+        == @html_text
       -else
         h1 Articles
         p
@@ -21,5 +20,6 @@
       hr
 
       - @articles.each do |article|
-        h3 = article.title
-        p  = article.description
+        = link_to article_path(article)
+          h3 = article.title
+          p  = article.description

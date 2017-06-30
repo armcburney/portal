@@ -1,12 +1,8 @@
 = render partial: 'shared/nav'
-
-.row.bg-black.light-text
-  .section.center
-    h1 Contact me
+= render partial: 'shared/title',
+  locals: { title: 'Contact', description: 'Contact me below' }
 
 .row
   .section
-    h1 Contact#index
-
     = form_for :send_mail do |f|
       = f.submit

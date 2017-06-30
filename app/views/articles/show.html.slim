@@ -1,9 +1,8 @@
 = render partial: 'shared/nav'
 = stylesheet_pack_tag "highlight/styles/#{@stylesheet}"
-= javascript_pack_tag 'highlight/highlight'
 
 .row
   .section
     h1 Article
     h2= @article.title
-    == ArticlesHelper.render_html!(@article.text)
+    == @html_text
